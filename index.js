@@ -7,11 +7,13 @@ const shopRouter=require('./routes/Shop.route')
 const app = express()
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false ,useUnifiedTopology: true}));
+
+const port = 5000;
 
 app.use('/shops',shopRouter);
 
 
 
 
-app.listen(7878, () => console.log(`Example app listening on port port!`))
+app.listen(process.env.PORT || port)
